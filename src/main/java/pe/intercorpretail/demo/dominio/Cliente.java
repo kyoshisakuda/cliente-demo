@@ -1,21 +1,20 @@
 package pe.intercorpretail.demo.dominio;
 
 import java.time.LocalDate;
-import java.util.UUID;
 
 public class Cliente {
 
-    private UUID id;
+    private Long id;
     private String nombre;
     private String apellido;
     private int edad;
     private LocalDate fechaNacimiento;
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
