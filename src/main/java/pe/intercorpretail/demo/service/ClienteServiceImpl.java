@@ -12,6 +12,8 @@ import java.util.stream.Collectors;
 @Service
 public class ClienteServiceImpl implements ClienteService{
 
+    private static final int ESPERANZA_VIDA_PERU = 75;
+
     @Resource
     private ClientePersistence clientePersistence;
 
@@ -25,6 +27,7 @@ public class ClienteServiceImpl implements ClienteService{
     @Override
     public List<ClienteDTO> listarClientes() {
         List<Cliente> clientes = clientePersistence.listar();
+        clientes.forEach(this::completarPosibleFechaMuerte);
         return mapToListaClienteDTO(clientes);
     }
 
@@ -34,11 +37,15 @@ public class ClienteServiceImpl implements ClienteService{
 
     private ClienteDTO mapToClienteDTO(Cliente cliente) {
         return new ClienteDTO(cliente.getNombre(), cliente.getApellido(), cliente.getEdad(),
-                cliente.getFechaNacimiento());
+                cliente.getFechaNacimiento(), cliente.getFechaProbableMuerte());
     }
 
     private List<ClienteDTO> mapToListaClienteDTO(List<Cliente> clientes) {
         return clientes.stream().map(this::mapToClienteDTO).collect(Collectors.toList());
+    }
+
+    private void completarPosibleFechaMuerte(Cliente cliente) {
+        cliente.setFechaProbableMuerte(cliente.getFechaNacimiento().plusYears(ESPERANZA_VIDA_PERU));
     }
 
 }

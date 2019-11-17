@@ -9,6 +9,7 @@ public class Cliente {
     private String apellido;
     private int edad;
     private LocalDate fechaNacimiento;
+    private LocalDate fechaProbableMuerte;
 
     public Cliente(String nombre, String apellido, int edad, LocalDate fechaNacimiento) {
         this(null, nombre, apellido, edad, fechaNacimiento);
@@ -60,5 +61,13 @@ public class Cliente {
 
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
+    }
+
+    public LocalDate getFechaProbableMuerte() {
+        return fechaProbableMuerte;
+    }
+
+    public void setFechaProbableMuerte(LocalDate fechaProbableMuerte) {
+        this.fechaProbableMuerte = fechaProbableMuerte;
     }
 }

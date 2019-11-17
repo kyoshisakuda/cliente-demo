@@ -1,13 +1,11 @@
 package pe.intercorpretail.demo.service;
 
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import pe.intercorpretail.demo.dominio.Cliente;
 import pe.intercorpretail.demo.dto.ClienteDTO;
 import pe.intercorpretail.demo.persistence.ClientePersistence;
@@ -16,8 +14,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -49,7 +47,7 @@ public class ClienteServiceImplTest {
 
         List<ClienteDTO> clientes = clienteService.listarClientes();
         assertEquals(3, clientes.size());
-        clientes.forEach(Assert::assertNotNull);
+        clientes.forEach(cliente -> assertNotNull(cliente.getFechaProbableMuerte()));
     }
 
     private List<Cliente> getTestListaClientes() {
