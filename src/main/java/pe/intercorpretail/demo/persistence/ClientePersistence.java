@@ -10,4 +10,8 @@ public interface ClientePersistence {
 
     List<Cliente> listar();
 
+    Double getPromedioEdades();
+
+    Double getDesviacionEstandarEdades();
+
 }
