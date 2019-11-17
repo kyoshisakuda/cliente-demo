@@ -10,6 +10,18 @@ public class Cliente {
     private int edad;
     private LocalDate fechaNacimiento;
 
+    public Cliente(String nombre, String apellido, int edad, LocalDate fechaNacimiento) {
+        this(null, nombre, apellido, edad, fechaNacimiento);
+    }
+
+    public Cliente(Long id, String nombre, String apellido, int edad, LocalDate fechaNacimiento) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
     public Long getId() {
         return id;
     }
