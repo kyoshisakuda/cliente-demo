@@ -5,6 +5,7 @@ import pe.intercorpretail.demo.dto.KPIClientesDTO;
 import pe.intercorpretail.demo.persistence.ClientePersistence;
 
 import javax.annotation.Resource;
+import java.text.DecimalFormat;
 
 @Service
 public class KPIClienteServiceImpl implements KPIClienteService {

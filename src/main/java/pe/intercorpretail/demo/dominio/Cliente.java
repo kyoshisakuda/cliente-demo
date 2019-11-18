@@ -1,15 +1,24 @@
 package pe.intercorpretail.demo.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
 public class Cliente {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String nombre;
     private String apellido;
     private int edad;
     private LocalDate fechaNacimiento;
     private LocalDate fechaProbableMuerte;
+
+    public Cliente() {}
 
     public Cliente(String nombre, String apellido, int edad, LocalDate fechaNacimiento) {
         this(null, nombre, apellido, edad, fechaNacimiento);

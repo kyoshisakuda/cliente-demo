@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'clientes_service'
+      MYSQL_USER: 'kyo'
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_PASSWORD: 'kyo'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+
+  app:
+    build: .
+    ports:
+      - 8085:8085
+    depends_on:
+      - mysql

@@ -5,6 +5,8 @@ public class KPIClientesDTO {
     private Double promedioEdad;
     private Double desviacionEstandarEdad;
 
+    public KPIClientesDTO() {}
+
     public KPIClientesDTO(Double promedioEdad, Double desviacionEstandarEdad) {
         this.promedioEdad = promedioEdad;
         this.desviacionEstandarEdad = desviacionEstandarEdad;

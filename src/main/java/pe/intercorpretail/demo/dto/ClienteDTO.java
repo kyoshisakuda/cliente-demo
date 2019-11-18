@@ -1,14 +1,27 @@
 package pe.intercorpretail.demo.dto;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 public class ClienteDTO {
 
+    @NotEmpty(message = "Nombre no puede estar vacío")
     private String nombre;
+
+    @NotEmpty(message = "Apellido no puede estar vacío")
     private String apellido;
+
+    @NotEmpty(message = "Edad no puede estar vacío")
+    @Min(value = 1, message = "Edad inválida")
     private Integer edad;
+
+    @NotEmpty(message = "Fecha de nacimiento no puede estar vacío")
     private LocalDate fechaNacimiento;
+
     private LocalDate fechaProbableMuerte;
+
+    public ClienteDTO() {}
 
     public ClienteDTO(String nombre, String apellido, Integer edad, LocalDate fechaNacimiento) {
         this(nombre, apellido, edad, fechaNacimiento, null);
@@ -60,5 +73,15 @@ public class ClienteDTO {
 
     public void setFechaProbableMuerte(LocalDate fechaProbableMuerte) {
         this.fechaProbableMuerte = fechaProbableMuerte;
+    }
+
+    @Override
+    public String toString() {
+        return "ClienteDTO{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", fechaNacimiento=" + fechaNacimiento +
+                '}';
     }
 }
