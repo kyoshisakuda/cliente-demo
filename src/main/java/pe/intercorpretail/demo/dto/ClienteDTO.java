@@ -2,6 +2,7 @@ package pe.intercorpretail.demo.dto;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class ClienteDTO {
@@ -12,11 +13,10 @@ public class ClienteDTO {
     @NotEmpty(message = "Apellido no puede estar vacío")
     private String apellido;
 
-    @NotEmpty(message = "Edad no puede estar vacío")
-    @Min(value = 1, message = "Edad inválida")
+    @Min(1)
     private Integer edad;
 
-    @NotEmpty(message = "Fecha de nacimiento no puede estar vacío")
+    @NotNull(message = "Fecha de nacimiento no puede estar vacío")
     private LocalDate fechaNacimiento;
 
     private LocalDate fechaProbableMuerte;

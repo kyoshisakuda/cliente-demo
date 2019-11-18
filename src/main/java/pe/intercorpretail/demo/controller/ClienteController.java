@@ -6,6 +6,8 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pe.intercorpretail.demo.dominio.Cliente;
@@ -34,23 +36,24 @@ public class ClienteController {
 
     @ApiOperation(value = "Crear nuevo cliente", response = ClienteDTO.class)
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Cliente creado satisfactoriamente")
+            @ApiResponse(code = 201, message = "Cliente creado satisfactoriamente")
     })
-    @PostMapping(value = "/creacliente", produces = "application/json", consumes = "application/json")
+    @PostMapping(value = "/creacliente", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<ClienteDTO> crearCliente(@Valid @RequestBody ClienteDTO cliente) {
         logger.info("Insertando nuevo cliente [{}]", cliente);
-        return ResponseEntity.ok(clienteService.crearCliente(cliente));
+        return new ResponseEntity<>(clienteService.crearCliente(cliente), HttpStatus.CREATED);
     }
 
     @ApiOperation(value = "Mostrar promedio y desviación estandar de edades de clientes", response = KPIClientesDTO.class)
-    @GetMapping(value = "/kpideclientes", produces = "application/json")
+    @GetMapping(value = "/kpideclientes", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<KPIClientesDTO> getKPIClientes() {
         logger.info("Obteniendo KPIs de clientes");
         return ResponseEntity.ok(kpiClienteService.obtenerKPIs());
     }
 
     @ApiOperation(value = "Listar clientes", response = List.class)
-    @GetMapping(value = "/listclientes", produces = "application/json")
+    @GetMapping(value = "/listclientes", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<ClienteDTO>> listarClientes() {
         logger.info("listando clientes");
         return ResponseEntity.ok(clienteService.listarClientes());
